@@ -2,44 +2,188 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://externaldisplayiphone.com/</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://externaldisplayiphone.com/blog</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1</priority>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/video_player</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/connect-iphone-ipad-to-monitor-or-tv</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/youtube-fullscreen-on-tv</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/photo-slideshow-on-tv</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/present-without-a-laptop</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/mount-icloud-local-and-external-drives</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/work-with-google-drive-and-office-files</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/install-websites-as-apps</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/browser-features-guide</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/mouse-keyboard-and-shortcuts</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/import-bookmarks-and-passwords</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/guides/device-layout-mode</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/did-ios-26-add-desktop-mode</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/turn-your-iphone-into-a-desktop-2026</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/youtube-on-tv-from-iphone-no-ads-no-black-bars</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/ipad-external-display-without-stage-manager</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/shiftscreen-alternative-for-iphone</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/iphone-as-a-laptop-for-travel</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/present-pdf-fullscreen-from-iphone-to-projector</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/iphone-external-monitor-setup-guide-by-model</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/can-you-plug-an-iphone-into-a-portable-monitor</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/iphone-usb-c-hub-external-ssd-setup</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://externaldisplayiphone.com/blog/photo-slideshow-on-tv-from-iphone</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://externaldisplayiphone.com/blog/how-to-use-iphone-with-external-monitor</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://externaldisplayiphone.com/blog/iphone-portable-monitor-full-screen</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://externaldisplayiphone.com/blog/best-way-to-extend-iphone-to-tv</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://externaldisplayiphone.com/blog/samsung-dex-alternative-for-iphone</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://externaldisplayiphone.com/blog/iphone-external-display-no-black-bars</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>
