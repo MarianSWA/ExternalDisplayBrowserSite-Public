@@ -1,0 +1,228 @@
+{
+  "schema": 1,
+  "generated": "2026-09-06T12:50:39Z",
+  "baseUrl": "https://externaldisplayiphone.com/packs/",
+  "packs": [
+    {
+      "id": "wallpapers",
+      "kind": "wallpapers",
+      "version": 1,
+      "autoDownload": true,
+      "downloadBytes": 28876660,
+      "installBytes": 28876660,
+      "files": [
+        {
+          "url": "wallpapers/2.jpg",
+          "install": "wallpapers/2.jpg",
+          "bytes": 1687171,
+          "sha256": "1e7af53eee341f87643f897f50b0e358197aae5dbf9520ed1b249137e792a1c5",
+          "installBytes": 1687171
+        },
+        {
+          "url": "wallpapers/3.jpg",
+          "install": "wallpapers/3.jpg",
+          "bytes": 2264068,
+          "sha256": "5ded72fedd0f8f50d34303641e3a5c5cf4a0e47ed0f1a7662d01cffed4ba4461",
+          "installBytes": 2264068
+        },
+        {
+          "url": "wallpapers/4.jpg",
+          "install": "wallpapers/4.jpg",
+          "bytes": 2946630,
+          "sha256": "91f1cd76b3984a4d8675ded152838bca626a3bb53786df734f4ff5de813efbd5",
+          "installBytes": 2946630
+        },
+        {
+          "url": "wallpapers/5.jpg",
+          "install": "wallpapers/5.jpg",
+          "bytes": 2655156,
+          "sha256": "fa10360247fdbf970c9faabaf9cda7afe727ab2c7c4231d723d082522850bb7b",
+          "installBytes": 2655156
+        },
+        {
+          "url": "wallpapers/6.jpg",
+          "install": "wallpapers/6.jpg",
+          "bytes": 2998968,
+          "sha256": "8ab13bfcbce6736625d7f0e29af046e8a1af978a0339031faa29992f0121baa4",
+          "installBytes": 2998968
+        },
+        {
+          "url": "wallpapers/7.jpg",
+          "install": "wallpapers/7.jpg",
+          "bytes": 1310029,
+          "sha256": "9fda9cf764ac14c193bcd20033dfe08f01c594a8619b94c8d8078fa95f3d7f5e",
+          "installBytes": 1310029
+        },
+        {
+          "url": "wallpapers/8.jpg",
+          "install": "wallpapers/8.jpg",
+          "bytes": 1695343,
+          "sha256": "cb15b563bf6b12211323308c3634cb887adb430481078706784f240d12fb685e",
+          "installBytes": 1695343
+        },
+        {
+          "url": "wallpapers/9.jpg",
+          "install": "wallpapers/9.jpg",
+          "bytes": 3026742,
+          "sha256": "74fa6eb684ec1df0c5bb5b3a48f65d31b90220fbfb521d4e813870c7cd2a7351",
+          "installBytes": 3026742
+        },
+        {
+          "url": "wallpapers/10.jpg",
+          "install": "wallpapers/10.jpg",
+          "bytes": 1319047,
+          "sha256": "f050e08789b5e3fc5cb175b4b01a78c0171266731493d900a700b1f0ba67863c",
+          "installBytes": 1319047
+        },
+        {
+          "url": "wallpapers/11.jpg",
+          "install": "wallpapers/11.jpg",
+          "bytes": 1306481,
+          "sha256": "0841bc9014e9e69486e8906475c66413a788e4429e036a8d89e38f069ebd5791",
+          "installBytes": 1306481
+        },
+        {
+          "url": "wallpapers/12.jpg",
+          "install": "wallpapers/12.jpg",
+          "bytes": 2584736,
+          "sha256": "e460ee41b83cf2c995d4b36ae0df9d806b30f551043f2ec3cbc51b0ce8347551",
+          "installBytes": 2584736
+        },
+        {
+          "url": "wallpapers/13.jpg",
+          "install": "wallpapers/13.jpg",
+          "bytes": 2338474,
+          "sha256": "c5db1f01cb7baa02bd340e520960847bcd48a06d6ebdee7de304202ac3f24d14",
+          "installBytes": 2338474
+        },
+        {
+          "url": "wallpapers/14.jpg",
+          "install": "wallpapers/14.jpg",
+          "bytes": 2743815,
+          "sha256": "f1d67e42ba64353fb9544e2a093936ef04b97e4ce1dccc5392714a6b24666772",
+          "installBytes": 2743815
+        }
+      ]
+    },
+    {
+      "id": "ime-ja",
+      "kind": "ime",
+      "language": "ja",
+      "version": 1,
+      "format": 2,
+      "autoDownload": false,
+      "downloadBytes": 5494216,
+      "installBytes": 13567408,
+      "files": [
+        {
+          "url": "ime/ime-ja-v1.dat.xz",
+          "install": "ime/ime-ja-v1.dat",
+          "compression": "xz",
+          "bytes": 5494216,
+          "sha256": "a5b0c9cb519feebbb2fa8fddf67efad9fe4f9fc6f8e5100839c989095dd0f6ab",
+          "installBytes": 13567408,
+          "installSha256": "45351be01c035de02f4089c23d38032dd25eb5097bcbf331e879b7e647ccbd4a"
+        }
+      ],
+      "counts": {
+        "keys": 545875,
+        "values": 786359,
+        "strings": 694298,
+        "bytes": 13567408,
+        "alphabet": 85
+      },
+      "sources": [
+        {
+          "name": "mozc dictionary_oss",
+          "licence": "BSD-3-Clause",
+          "holder": "Google Inc.",
+          "url": "https://github.com/google/mozc"
+        },
+        {
+          "name": "jieba dict.txt",
+          "licence": "MIT",
+          "holder": "Sun Junyi",
+          "url": "https://github.com/fxsjy/jieba"
+        },
+        {
+          "name": "pinyin-data",
+          "licence": "MIT",
+          "holder": "mozillazg",
+          "url": "https://github.com/mozillazg/pinyin-data"
+        },
+        {
+          "name": "phrase-pinyin-data",
+          "licence": "MIT",
+          "holder": "mozillazg",
+          "url": "https://github.com/mozillazg/phrase-pinyin-data"
+        },
+        {
+          "name": "OpenCC dictionaries",
+          "licence": "Apache-2.0",
+          "holder": "Carbo Kuo",
+          "url": "https://github.com/BYVoid/OpenCC"
+        }
+      ]
+    },
+    {
+      "id": "ime-zh",
+      "kind": "ime",
+      "language": "zh",
+      "version": 1,
+      "format": 2,
+      "autoDownload": false,
+      "downloadBytes": 3286612,
+      "installBytes": 9328524,
+      "files": [
+        {
+          "url": "ime/ime-zh-v1.dat.xz",
+          "install": "ime/ime-zh-v1.dat",
+          "compression": "xz",
+          "bytes": 3286612,
+          "sha256": "ff81910b8006f9f490ecf2cc661808aeda9e91771df536e02498b8386d267cb2",
+          "installBytes": 9328524,
+          "installSha256": "cb681d92fbf682bffa32c00c066c5286c041b008158cc0d2cfb2447475325966"
+        }
+      ],
+      "counts": {
+        "keys": 267777,
+        "values": 345569,
+        "strings": 578351,
+        "bytes": 9328524,
+        "alphabet": 26
+      },
+      "sources": [
+        {
+          "name": "mozc dictionary_oss",
+          "licence": "BSD-3-Clause",
+          "holder": "Google Inc.",
+          "url": "https://github.com/google/mozc"
+        },
+        {
+          "name": "jieba dict.txt",
+          "licence": "MIT",
+          "holder": "Sun Junyi",
+          "url": "https://github.com/fxsjy/jieba"
+        },
+        {
+          "name": "pinyin-data",
+          "licence": "MIT",
+          "holder": "mozillazg",
+          "url": "https://github.com/mozillazg/pinyin-data"
+        },
+        {
+          "name": "phrase-pinyin-data",
+          "licence": "MIT",
+          "holder": "mozillazg",
+          "url": "https://github.com/mozillazg/phrase-pinyin-data"
+        },
+        {
+          "name": "OpenCC dictionaries",
+          "licence": "Apache-2.0",
+          "holder": "Carbo Kuo",
+          "url": "https://github.com/BYVoid/OpenCC"
+        }
+      ]
+    }
+  ]
+}

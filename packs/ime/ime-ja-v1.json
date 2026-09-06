@@ -1,0 +1,60 @@
+{
+  "id": "ime-ja",
+  "kind": "ime",
+  "language": "ja",
+  "profile": "full",
+  "dataVersion": 1,
+  "format": 2,
+  "install": {
+    "path": "ime/ime-ja-v1.dat",
+    "bytes": 13567408,
+    "sha256": "45351be01c035de02f4089c23d38032dd25eb5097bcbf331e879b7e647ccbd4a"
+  },
+  "download": {
+    "file": "ime-ja-v1.dat.xz",
+    "bytes": 5494216,
+    "compression": "xz",
+    "sha256": "a5b0c9cb519feebbb2fa8fddf67efad9fe4f9fc6f8e5100839c989095dd0f6ab"
+  },
+  "counts": {
+    "keys": 545875,
+    "values": 786359,
+    "strings": 694298,
+    "bytes": 13567408,
+    "alphabet": 85
+  },
+  "sources": [
+    {
+      "name": "mozc dictionary_oss",
+      "licence": "BSD-3-Clause",
+      "holder": "Google Inc.",
+      "url": "https://github.com/google/mozc"
+    },
+    {
+      "name": "jieba dict.txt",
+      "licence": "MIT",
+      "holder": "Sun Junyi",
+      "url": "https://github.com/fxsjy/jieba"
+    },
+    {
+      "name": "pinyin-data",
+      "licence": "MIT",
+      "holder": "mozillazg",
+      "url": "https://github.com/mozillazg/pinyin-data"
+    },
+    {
+      "name": "phrase-pinyin-data",
+      "licence": "MIT",
+      "holder": "mozillazg",
+      "url": "https://github.com/mozillazg/phrase-pinyin-data"
+    },
+    {
+      "name": "OpenCC dictionaries",
+      "licence": "Apache-2.0",
+      "holder": "Carbo Kuo",
+      "url": "https://github.com/BYVoid/OpenCC"
+    }
+  ],
+  "key": "hiragana reading",
+  "readings": 545875
+}
