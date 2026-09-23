@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Text Editor</title>
+<!--
+  XeOS Text Editor: a tiny reference app for the XeOS file API.
+  Install it in XeOS (the window's ⋯ menu ▸ Add to Dock), then right-click it in the Dock ▸
+  Advanced Options ▸ Allow Opening Files.
+
+  Every API call is here: XeOS.onOpenFile, XeOS.onSaveRequest, XeOS.showOpenFilePicker,
+  XeOS.showSaveFilePicker, file.read, file.write, XeOS.setEdited.
+  Outside XeOS it still works as a plain editor (a file input to open, a download to save).
+-->
+<style>
+  :root { color-scheme: light dark; --bg: #fff; --bar: #f3f3f5; --line: #dcdce0; --text: #1d1d1f; --dim: #86868b; --accent: #0a84ff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #1c1c1e; --bar: #2c2c2e; --line: #3a3a3c; --text: #f5f5f7; --dim: #98989d; } }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { display: flex; flex-direction: column; background: var(--bg); color: var(--text); font: 13px -apple-system, system-ui, sans-serif; }
+  header { display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: var(--bar); border-bottom: 1px solid var(--line); }
+  button { font: inherit; padding: 5px 11px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); color: var(--text); }
+  button:active { background: var(--line); }
+  #name { margin-left: 8px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #dot { width: 7px; height: 7px; border-radius: 50%; background: var(--dim); visibility: hidden; flex: none; }
+  #dot.on { visibility: visible; }
+  #status { margin-left: auto; color: var(--dim); white-space: nowrap; }
+  textarea { flex: 1; width: 100%; padding: 14px 16px; border: 0; outline: 0; resize: none; background: var(--bg); color: var(--text); font: 14px/1.5 ui-monospace, Menlo, monospace; }
+</style>
+</head>
+<body>
+<header>
+  <button id="new">New</button>
+  <button id="open">Open</button>
+  <button id="save">Save</button>
+  <button id="saveas">Save As</button>
+  <span id="name">Untitled.txt</span><span id="dot"></span>
+  <span id="status"></span>
+</header>
+<textarea id="text" spellcheck="false" autofocus></textarea>
+<script>
+(function () {
+  const xeos = window.XeOS || null;
+  const text = document.getElementById("text");
+  const nameEl = document.getElementById("name");
+  const dot = document.getElementById("dot");
+  const status = document.getElementById("status");
+
+  let file = null;        // the XeOS file being edited (null = Untitled)
+  let name = "Untitled.txt";
+  let edited = false;
+
+  function setEdited(value) {
+    edited = value;
+    dot.classList.toggle("on", value);
+    if (xeos) xeos.setEdited(value);
+  }
+  function show(message) {
+    status.textContent = message;
+    clearTimeout(show.t);
+    show.t = setTimeout(() => { status.textContent = xeos ? "" : "Not running in XeOS"; }, 2500);
+  }
+  function adopt(f, contents) {
+    file = f;
+    name = f.name;
+    nameEl.textContent = name;
+    document.title = name + " — Text Editor";
+    if (contents !== undefined) text.value = contents;
+    setEdited(false);
+  }
+  const cancelled = (e) => e && e.name === "AbortError";
+
+  async function openFile(f) {
+    const contents = await (await f.read()).text();
+    adopt(f, contents);
+    show("Opened");
+  }
+
+  async function saveAs() {
+    if (!xeos) { download(); return true; }
+    try {
+      const target = await xeos.showSaveFilePicker({ suggestedName: name, types: ["txt"] });
+      await target.write(text.value);
+      adopt(target);
+      show("Saved");
+      return true;
+    } catch (e) {
+      if (!cancelled(e)) show("Couldn't save: " + e.message);
+      return false;
+    }
+  }
+
+  async function save() {
+    if (!file) return saveAs();
+    try {
+      await file.write(text.value);
+      setEdited(false);
+      show("Saved");
+      return true;
+    } catch (e) {
+      show("Couldn't save: " + e.message);
+      return false;
+    }
+  }
+
+  async function open() {
+    if (!xeos) { pickLocally(); return; }
+    try {
+      const [f] = await xeos.showOpenFilePicker({ types: ["txt", "md", "csv", "json", "log"] });
+      await openFile(f);
+    } catch (e) {
+      if (!cancelled(e)) show("Couldn't open: " + e.message);
+    }
+  }
+
+  function newDocument() {
+    file = null;
+    name = "Untitled.txt";
+    nameEl.textContent = name;
+    document.title = "Text Editor";
+    text.value = "";
+    setEdited(false);
+    text.focus();
+  }
+
+  // Outside XeOS: an ordinary file input and a download.
+  function pickLocally() {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.onchange = async () => {
+      const f = input.files[0];
+      if (!f) return;
+      text.value = await f.text();
+      name = f.name; nameEl.textContent = name; file = null; setEdited(false);
+    };
+    input.click();
+  }
+  function download() {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text.value], { type: "text/plain" }));
+    a.download = name;
+    a.click();
+    setEdited(false);
+  }
+
+  if (xeos) {
+    // XeOS opens a file in this app (Open With, or a double-click when it's the default).
+    xeos.onOpenFile(openFile);
+    // XeOS asks to save (the window is closing with unsaved changes).
+    xeos.onSaveRequest(async () => {
+      if (!(await save())) throw new Error("not saved");
+    });
+  }
+
+  text.addEventListener("input", () => { if (!edited) setEdited(true); });
+  document.getElementById("new").onclick = newDocument;
+  document.getElementById("open").onclick = open;
+  document.getElementById("save").onclick = save;
+  document.getElementById("saveas").onclick = saveAs;
+  document.addEventListener("keydown", (e) => {
+    if (!(e.metaKey || e.ctrlKey)) return;
+    const key = e.key.toLowerCase();
+    if (key === "s") { e.preventDefault(); e.shiftKey ? saveAs() : save(); }
+    else if (key === "o") { e.preventDefault(); open(); }
+  });
+  window.addEventListener("beforeunload", (e) => { if (!xeos && edited) e.preventDefault(); });
+
+  show(xeos ? "" : "Not running in XeOS");
+})();
+</script>
+</body>
+</html>
