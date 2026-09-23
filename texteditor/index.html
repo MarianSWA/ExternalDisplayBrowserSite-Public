@@ -5,14 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Text Editor</title>
+<link rel="manifest" href="/texteditor/manifest.webmanifest">
+<link rel="icon" href="/texteditor/icon.svg" type="image/svg+xml">
 <!--
-  XeOS Text Editor: a tiny reference app for the XeOS file API.
-  Install it in XeOS (the window's ⋯ menu ▸ Add to Dock), then right-click it in the Dock ▸
-  Advanced Options ▸ Allow Opening Files.
+  Text Editor: a tiny web app that opens and saves files with nothing but web standards.
 
-  Every API call is here: XeOS.onOpenFile, XeOS.onSaveRequest, XeOS.showOpenFilePicker,
-  XeOS.showSaveFilePicker, file.read, file.write, XeOS.setEdited.
-  Outside XeOS it still works as a plain editor (a file input to open, a download to save).
+    File Handling API        launchQueue.setConsumer(…)      files the system opens in the app
+                             manifest.webmanifest file_handlers   the types it opens
+    File System Access API   showOpenFilePicker()            Open
+                             showSaveFilePicker()            Save As
+                             handle.getFile()                read a file
+                             handle.createWritable()         Save
+    HTML                     beforeunload                    unsaved changes
+
+  Where those APIs are missing it still works: a file input to open, a download to save.
 -->
 <style>
   :root { color-scheme: light dark; --bg: #fff; --bar: #f3f3f5; --line: #dcdce0; --text: #1d1d1f; --dim: #86868b; --accent: #0a84ff; }
@@ -42,29 +48,30 @@
 <textarea id="text" spellcheck="false"></textarea>
 <script>
 (function () {
-  const xeos = window.XeOS || null;
+  const canPick = "showOpenFilePicker" in window && "showSaveFilePicker" in window;
+  const types = [{ description: "Text", accept: { "text/plain": [".txt", ".md", ".csv", ".json", ".log"] } }];
+
   const text = document.getElementById("text");
   const nameEl = document.getElementById("name");
   const dot = document.getElementById("dot");
   const status = document.getElementById("status");
 
-  let file = null;        // the XeOS file being edited (null = Untitled)
+  let handle = null;      // the file being edited (null = Untitled)
   let name = "Untitled.txt";
   let edited = false;
 
   function setEdited(value) {
     edited = value;
     dot.classList.toggle("on", value);
-    if (xeos) xeos.setEdited(value);
   }
   function show(message) {
     status.textContent = message;
     clearTimeout(show.t);
-    show.t = setTimeout(() => { status.textContent = xeos ? "" : "Not running in XeOS"; }, 2500);
+    show.t = setTimeout(() => { status.textContent = ""; }, 2500);
   }
-  function adopt(f, contents) {
-    file = f;
-    name = f.name;
+  function adopt(fileHandle, fileName, contents) {
+    handle = fileHandle;
+    name = fileName;
     nameEl.textContent = name;
     document.title = name + " — Text Editor";
     if (contents !== undefined) text.value = contents;
@@ -72,18 +79,24 @@
   }
   const cancelled = (e) => e && e.name === "AbortError";
 
-  async function openFile(f) {
-    const contents = await (await f.read()).text();
-    adopt(f, contents);
+  async function openHandle(fileHandle) {
+    const file = await fileHandle.getFile();
+    adopt(fileHandle, file.name, await file.text());
     show("Opened");
   }
 
+  async function write(fileHandle) {
+    const writable = await fileHandle.createWritable();
+    await writable.write(text.value);
+    await writable.close();
+  }
+
   async function saveAs() {
-    if (!xeos) { download(); return true; }
+    if (!canPick) { download(); return true; }
     try {
-      const target = await xeos.showSaveFilePicker({ suggestedName: name, types: ["txt"] });
-      await target.write(text.value);
-      adopt(target);
+      const target = await showSaveFilePicker({ suggestedName: name, types });
+      await write(target);
+      adopt(target, target.name);
       show("Saved");
       return true;
     } catch (e) {
@@ -93,9 +106,9 @@
   }
 
   async function save() {
-    if (!file) return saveAs();
+    if (!handle) return saveAs();
     try {
-      await file.write(text.value);
+      await write(handle);
       setEdited(false);
       show("Saved");
       return true;
@@ -106,34 +119,29 @@
   }
 
   async function open() {
-    if (!xeos) { pickLocally(); return; }
+    if (!canPick) { pickLocally(); return; }
     try {
-      const [f] = await xeos.showOpenFilePicker({ types: ["txt", "md", "csv", "json", "log"] });
-      await openFile(f);
+      const [fileHandle] = await showOpenFilePicker({ types });
+      await openHandle(fileHandle);
     } catch (e) {
       if (!cancelled(e)) show("Couldn't open: " + e.message);
     }
   }
 
   function newDocument() {
-    file = null;
-    name = "Untitled.txt";
-    nameEl.textContent = name;
+    adopt(null, "Untitled.txt", "");
     document.title = "Text Editor";
-    text.value = "";
-    setEdited(false);
     text.focus();
   }
 
-  // Outside XeOS: an ordinary file input and a download.
+  // Without the File System Access API: an ordinary file input and a download.
   function pickLocally() {
     const input = document.createElement("input");
     input.type = "file";
+    input.accept = ".txt,.md,.csv,.json,.log,text/plain";
     input.onchange = async () => {
       const f = input.files[0];
-      if (!f) return;
-      text.value = await f.text();
-      name = f.name; nameEl.textContent = name; file = null; setEdited(false);
+      if (f) adopt(null, f.name, await f.text());
     };
     input.click();
   }
@@ -145,12 +153,10 @@
     setEdited(false);
   }
 
-  if (xeos) {
-    // XeOS opens a file in this app (Open With, or a double-click when it's the default).
-    xeos.onOpenFile(openFile);
-    // XeOS asks to save (the window is closing with unsaved changes).
-    xeos.onSaveRequest(async () => {
-      if (!(await save())) throw new Error("not saved");
+  // Files opened in this app from outside it (Open With, a double-click when it's the default).
+  if ("launchQueue" in window) {
+    launchQueue.setConsumer((params) => {
+      if (params.files && params.files.length) openHandle(params.files[0]);
     });
   }
 
@@ -165,9 +171,12 @@
     if (key === "s") { e.preventDefault(); e.shiftKey ? saveAs() : save(); }
     else if (key === "o") { e.preventDefault(); open(); }
   });
-  window.addEventListener("beforeunload", (e) => { if (!xeos && edited) e.preventDefault(); });
-
-  show(xeos ? "" : "Not running in XeOS");
+  // Unsaved changes: the browser (or the system) asks before this page is closed.
+  window.addEventListener("beforeunload", (e) => {
+    if (!edited) return;
+    e.preventDefault();
+    e.returnValue = "";
+  });
 })();
 </script>
 </body>
