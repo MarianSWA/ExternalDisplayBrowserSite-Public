@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "F7FJ6VFG49.com.externaldisplay.browser"
+        ],
+        "components": [
+          {
+            "/": "/apps/*",
+            "comment": "Craft Apps, opened in XeOS"
+          }
+        ]
+      }
+    ]
+  }
+}
