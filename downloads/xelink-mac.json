@@ -1,6 +1,6 @@
 {
-  "version": "1.1",
-  "build": 3,
+  "version": "1.2",
+  "build": 4,
   "url": "https://desktopmodeiphone.com/downloads/XeLink.dmg",
-  "notes": "Everything in the menu bar, the same layout as XeOS's Screen Sharing, one window per screen or window, and update checks."
+  "notes": "Resolution next to Priority (Auto, 720p, 1080p, 1440p), smoother streams on slow Wi-Fi, a picture that recovers on its own if the encoder stops, and a device with one screen opens straight to it."
 }
