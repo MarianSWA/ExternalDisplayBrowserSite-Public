@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "build": 4,
+  "build": 5,
   "url": "https://desktopmodeiphone.com/downloads/XeLink.dmg",
-  "notes": "Resolution next to Priority (Auto, 720p, 1080p, 1440p), smoother streams on slow Wi-Fi, a picture that recovers on its own if the encoder stops, and a device with one screen opens straight to it."
+  "notes": "Pairing is better protected: after five wrong codes it pauses before a new code is offered. In a browser, keys that extensions use as one-letter shortcuts now reach the shared screen."
 }
